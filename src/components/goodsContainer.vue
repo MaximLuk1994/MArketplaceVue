@@ -2,14 +2,14 @@
   <div id="#goods">
     <h1>{{ msg }}</h1>
     <div class="goods-page">
-      <product-card v-for="card in goods"
+      <!-- <product-card v-for="card in goods"
         :card-id = card.id
         :card-title = card.title
         :card-price = card.price
         :card-sale = card.sale
         :card-img = card.img
         :card-category = card.category
-      />
+      /> -->
     </div>
   </div>
 </template>

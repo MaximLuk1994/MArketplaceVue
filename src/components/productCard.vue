@@ -3,7 +3,7 @@
     <h5>{{ msg }}</h5>
     <div class="productcard__img">
       <img :src="cardImg" alt="image" />
-      <div class="productcard__added is-hidden">Добавлено!</div>
+      <!-- <div class="productcard__added is-hidden">Добавлено!</div> -->
     </div>
     <div class="productcard__sale" v-if="cardSale">sale!</div>
     <div class="productcard__details">

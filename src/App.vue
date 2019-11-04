@@ -1,33 +1,43 @@
 <template>
   <div id="app">
-    <myHeader/>
+    <app-header v-bind="cart" @showCart="cart.isHidden=$event"/>
     <div class="content-wrapper">
       <div id="my-content">
-        <filters id="filters" msg="Фильтры:"/>
+        <app-filters id="filters" msg="Фильтры:"/>
         <div class="my-content__right">
-          <goodsContainer msg="Товары:"/>
+          <app-goods-container msg="Товары:"/>
           <hr>
-          <pagination msg="Пагинация:"/>
+          <app-pagination msg="Пагинация:"/>
         </div>
       </div>
     </div>
+    <app-cart v-if="!cart.isHidden"/>
   </div>
 </template>
 
 <script>
-import goodsContainer from './components/goodsContainer.vue'
-import myHeader from './components/myHeader.vue'
-import filters from './components/filters.vue'
-import pagination from './components/pagination.vue'
+import appGoodsContainer from './components/goodsContainer.vue'
+import appHeader from './components/myHeader.vue'
+import appFilters from './components/filters.vue'
+import appPagination from './components/pagination.vue'
+import appCart from './components/cart.vue'
 
 export default {
-  name: 'app',
   components: {
-    myHeader,
-    filters,
-    goodsContainer,
-    pagination
-  }
+    appHeader,
+    appFilters,
+    appGoodsContainer,
+    appPagination,
+    appCart
+  },
+  data() {
+    return {
+      name: 'app',
+      cart: {
+        isHidden: true
+      }
+    }
+  },
 }
 </script>
 
@@ -38,7 +48,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
 }
 #my-content {
     display: flex;
