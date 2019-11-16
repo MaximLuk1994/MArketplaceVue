@@ -2,27 +2,30 @@
   <div id="#goods">
     <h1>{{ msg }}</h1>
     <div class="goods-page">
-      <!-- <product-card v-for="card in goods"
+      <product-card v-for="card in goods"
         :card-id = card.id
         :card-title = card.title
         :card-price = card.price
         :card-sale = card.sale
         :card-img = card.img
         :card-category = card.category
-      /> -->
+      />
     </div>
   </div>
 </template>
 
 <script>
 import productCard from "./productCard.vue"
-import json from "../db/db.json"
+// import json from "../db/db.json"
+import axios from 'axios'
 
 export default {
   data() {
     return {
       name: "goodsContainer",
-      goods: json['goods']
+      // goods: json['goods']
+      goods: null
+      // url: 'https://api.myjson.com/bins/uv4ya'
     }
   },  
   props: {
@@ -32,6 +35,15 @@ export default {
     productCard
   },
   methods: {
+  },
+  mounted() {
+    axios
+      .get('https://api.myjson.com/bins/uv4ya')
+      .then(response => {
+        this.goods = response.data.goods;
+        console.log(response.data.goods);
+      })
+      .catch(error => console.log(error));
   }
 }
 </script>

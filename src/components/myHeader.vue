@@ -53,9 +53,6 @@
 
 <script>
 export default {
-  props: {
-    cart: Object
-  },
   data() {
     return {
       name: 'myHeader'   
@@ -63,9 +60,7 @@ export default {
   },
   methods: {
     showCart() {
-      console.log(this.cart)
-      this.cart.isHidden = !this.cart.isHidden
-      this.$emit('showCart', this.cart.isHidden)
+      this.$emit('showCart', false)
     }
   }
 }

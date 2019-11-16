@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header v-bind="cart" @showCart="cart.isHidden=$event"/>
+    <app-header @showCart="cart.isHidden=$event"/>
     <div class="content-wrapper">
       <div id="my-content">
         <app-filters id="filters" msg="Фильтры:"/>
@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <app-cart v-if="!cart.isHidden"/>
+    <app-cart v-if="!cart.isHidden" @hideCart="cart.isHidden=$event"/>
   </div>
 </template>
 
@@ -37,7 +37,7 @@ export default {
         isHidden: true
       }
     }
-  },
+  }
 }
 </script>
 

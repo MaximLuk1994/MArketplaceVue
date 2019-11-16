@@ -19,7 +19,7 @@
         <div class="empty">Ваша корзина пока пуста</div>
       </div>
       <button class="cart__confirm">Оформить заказ</button>
-      <div class="cart__close">
+      <div class="cart__close" @click="hideCart">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
@@ -47,6 +47,11 @@ export default {
   data() {
     return {
       name: "cart"
+    }
+  },
+  methods: {
+    hideCart() {
+      this.$emit('hideCart', true)
     }
   }
 };
