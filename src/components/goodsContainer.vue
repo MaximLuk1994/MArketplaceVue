@@ -2,7 +2,7 @@
   <div id="#goods">
     <h1>{{ msg }}</h1>
     <div class="goods-page">
-      <product-card v-for="card in goods"
+      <product-card v-for="card in $store.state.goodsArr"
         :card-id = card.id
         :card-title = card.title
         :card-price = card.price
@@ -24,7 +24,7 @@ export default {
     return {
       name: "goodsContainer",
       // goods: json['goods']
-      goods: null
+      // goods: null
       // url: 'https://api.myjson.com/bins/uv4ya'
     }
   },  
@@ -38,10 +38,10 @@ export default {
   },
   mounted() {
     axios
-      .get('https://api.myjson.com/bins/uv4ya')
+      .get(this.$store.state.url)
       .then(response => {
-        this.goods = response.data.goods;
-        console.log(response.data.goods);
+        this.$store.commit('getGoods', response.data.goods);
+        console.log(this.$store.state.goodsArr);
       })
       .catch(error => console.log(error));
   }
